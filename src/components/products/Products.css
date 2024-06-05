@@ -1,0 +1,19 @@
+.products{
+    width: 100%;
+    /* margin-top: 50px; */
+    padding: 50px 0;
+    background: linear-gradient(135deg, #f8f9fa, #e2e6ea);
+
+}
+.products h1{
+    text-align: center;
+    
+}
+.products-container{
+    width: 80%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 14px;
+
+}
