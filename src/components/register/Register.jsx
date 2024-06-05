@@ -30,7 +30,7 @@ const Register = () => {
                 const userInfo = {
                     name, email, img
                 }
-                fetch('http://localhost:5000/users', {
+                fetch('https://laptop-shop-server-vert.vercel.app/users', {
                     method: "POST",
                     headers: {
                         'content-type': 'application/json'
@@ -64,7 +64,7 @@ const Register = () => {
                 const userInfo = {
                     name, email, img
                 }
-                fetch('http://localhost:5000/users', {
+                fetch('https://laptop-shop-server-vert.vercel.app/users', {
                     method: "POST",
                     headers: {
                         'content-type': 'application/json'

@@ -14,7 +14,7 @@ const AddProducts = () => {
 
         const data = {title, img, price, config, brand}
         // console.log(data);
-        await fetch('http://localhost:5000/laptops', {
+        await fetch('https://laptop-shop-server-vert.vercel.app/laptops', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

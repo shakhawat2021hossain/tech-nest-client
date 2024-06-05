@@ -11,7 +11,7 @@ const EditProduct = () => {
 
     console.log(product);
     useEffect(() => {
-        fetch(`http://localhost:5000/laptops/${id}`)
+        fetch(`https://laptop-shop-server-vert.vercel.app/laptops/${id}`)
             .then(res => res.json())
             .then(data => setProduct(data))
     }, [])
@@ -31,7 +31,7 @@ const EditProduct = () => {
         const data = { title, price, config, brand, img };
         // console.log(data);
 
-        fetch(`http://localhost:5000/laptops/${product._id}`, {
+        fetch(`https://laptop-shop-server-vert.vercel.app/laptops/${product._id}`, {
             method: "PATCH",
             headers: {
                 'content-type': 'application/json'

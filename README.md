@@ -1,8 +1,32 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Features
 
-Currently, two official plugins are available:
+- User authentication and authorization
+- Browse laptops for sale
+- Request laptop repair services
+- Admin dashboard to manage products and orders
+- Responsive design for mobile and desktop
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technologies
+
+- **Frontend:**
+  - React
+
+- **Backend:**
+  - Node.js
+  - Express.js
+  - MongoDB (with Mongoose for ODM)
+  - JWT (for authentication)
+
+- Node.js
+- MongoDB
+
+## Usage
+
+1. Open your browser and navigate to .
+2. Register or log in to your account.
+3. CRUD Operation & Dashboard Features
+4. User Profile
+5. Browse laptops
+6. For repair services, navigate to the repair section and submit a request.
+

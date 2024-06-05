@@ -7,7 +7,7 @@ const ManageProducts = () => {
 
     const [products, setProducts] = useState([]);
     const loadData = () =>{
-        fetch('http://localhost:5000/laptops')
+        fetch('https://laptop-shop-server-vert.vercel.app/laptops')
         .then(res => res.json())
         .then(data => setProducts(data))
     }
@@ -17,7 +17,7 @@ const ManageProducts = () => {
 
 
     const handleDelete = (id) =>{
-        fetch(`http://localhost:5000/laptops/${id}`, {
+        fetch(`https://laptop-shop-server-vert.vercel.app/laptops/${id}`, {
             method: "DELETE"
         })
         .then(res => res.json())

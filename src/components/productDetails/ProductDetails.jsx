@@ -7,7 +7,7 @@ const ProductDetails = () => {
 
     const [value, setValue] = useState({});
     useEffect(() =>{
-        fetch(`http://localhost:5000/laptops/${id}`)
+        fetch(`https://laptop-shop-server-vert.vercel.app/laptops/${id}`)
         .then(res => res.json())
         .then(data => setValue(data))
     },[])

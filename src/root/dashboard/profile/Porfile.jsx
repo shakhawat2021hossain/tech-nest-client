@@ -7,7 +7,7 @@ const Profile = () => {
     const {user} = useContext(AuthContext)
     const [singleUser, setSingleUser] = useState({});
     useEffect(() =>{
-        fetch(`http://localhost:5000/users/${user?.email}`)
+        fetch(`https://laptop-shop-server-vert.vercel.app/users/${user?.email}`)
         .then(res => res.json())
         .then(data => setSingleUser(data))
     },[])

@@ -11,7 +11,7 @@ const UpdateProfile = () => {
     // console.log(user);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/users/get/${id}`)
+        fetch(`https://laptop-shop-server-vert.vercel.app/users/get/${id}`)
             .then(res => res.json())
             .then(data => setUser(data))
     }, [])
@@ -27,7 +27,7 @@ const UpdateProfile = () => {
         const data = { title, birth, country, img };
         // console.log(data);
 
-        fetch(`http://localhost:5000/users/get/${user?._id}`, {
+        fetch(`https://laptop-shop-server-vert.vercel.app/users/get/${user?._id}`, {
             method: "PATCH",
             headers: {
                 'content-type': 'application/json'
