@@ -76,7 +76,7 @@ const Login = () => {
                         type="email"
                         id="email"
                         name="email"
-                        required>
+                        >
                     </input>
                 </div>
                 <div className="form-group">
@@ -85,7 +85,7 @@ const Login = () => {
                         type="password"
                         id="password"
                         name="password"
-                        required>
+                        >
                     </input>
                 </div>
                 <button className='login-btn' type="submit">Login</button>
