@@ -1,4 +1,4 @@
-import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
+import { GoogleAuthProvider, browserPopupRedirectResolver, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
 import { createContext, useEffect, useState } from 'react';
 import auth from '../firebase/firebase.config';
 
@@ -18,7 +18,7 @@ const AuthProvider = ({children}) => {
 
     const provider = new GoogleAuthProvider();
     const googleSignIn = () =>{
-        return signInWithPopup(auth, provider);
+        return signInWithPopup(auth, provider, browserPopupRedirectResolver);
     }
 
     useEffect(() =>{
