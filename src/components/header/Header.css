@@ -1,4 +1,4 @@
-.header{
+/* .header{
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -16,15 +16,27 @@ nav a{
 nav a:hover{
     background: #7E8EF1;
 }
-.active{
-    background: #7E8EF1;
 
-}
-.logo{
-    color: white;
-    font-size: 40px;
-}
+
 .profile-pic{
     width: 50px;
     border-radius: 50%;
+} */
+.navbar{
+    box-sizing: border-box;
+}
+/* ul a{
+    margin-right: 12px;
+    color: white;
+    font-size: 18px;
+    padding: 4px 8px;
+} */
+
+.active{
+    background: #7E8EF1;
+}
+
+.logo{
+    color: white;
+    font-size: 40px;
 }

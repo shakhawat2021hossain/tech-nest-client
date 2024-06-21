@@ -11,7 +11,7 @@ const UpdateProfile = () => {
     // console.log(user);
 
     useEffect(() => {
-        fetch(`https://laptop-shop-server-vert.vercel.app/users/get/${id}`)
+        fetch(`https://tech-nest-server-b2xo.onrender.com/users/get/${id}`)
             .then(res => res.json())
             .then(data => setUser(data))
     }, [])
@@ -27,7 +27,7 @@ const UpdateProfile = () => {
         const data = { title, birth, country, img };
         // console.log(data);
 
-        fetch(`https://laptop-shop-server-vert.vercel.app/users/get/${user?._id}`, {
+        fetch(`https://tech-nest-server-b2xo.onrender.com/users/get/${user?._id}`, {
             method: "PATCH",
             headers: {
                 'content-type': 'application/json'
@@ -36,7 +36,7 @@ const UpdateProfile = () => {
         })
         toast.success("Successfully updated!")
         form.reset();
-        navigate('/dashboard')
+        navigate('/dashboard/profile')
 
 
     }

@@ -1,39 +1,45 @@
 import React, { useEffect, useState } from 'react';
-import './ManageProducts.css';
 import { Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
 
 const ManageProducts = () => {
 
     const [products, setProducts] = useState([]);
-    const loadData = () =>{
-        fetch('https://laptop-shop-server-vert.vercel.app/laptops')
-        .then(res => res.json())
-        .then(data => setProducts(data))
+    const loadData = () => {
+        fetch('https://tech-nest-server-b2xo.onrender.com/laptops')
+            .then(res => res.json())
+            .then(data => setProducts(data))
     }
-    useEffect(() =>{
+    useEffect(() => {
         loadData();
-    },[])
+    }, [])
+
+    const token = localStorage.getItem('token')
 
 
-    const handleDelete = (id) =>{
-        fetch(`https://laptop-shop-server-vert.vercel.app/laptops/${id}`, {
-            method: "DELETE"
+    const handleDelete = (id) => {
+        fetch(`https://tech-nest-server-b2xo.onrender.com/laptops/${id}`, {
+            method: "DELETE",
+            headers: {
+                'content-type': 'application/json',
+                authorization: `bearer ${token}`
+            }
         })
-        .then(res => res.json())
-        .then(data => {
-            toast.success("Successfully Deleted the product");
-            loadData();
-        })
+            .then(res => res.json())
+            .then(data => {
+                toast.success("Successfully Deleted the product");
+                loadData();
+            })
     }
 
     return (
-        <div className='manage-products'>
+        <div className="overflow-x-auto mx-auto">
             <h1>Manage Products</h1>
-            <table>
+            <table className="table table-zebra">
+                {/* head */}
                 <thead>
                     <tr>
-                        {/* <th>ID</th> */}
+                        <th></th>
                         <th>Title</th>
                         <th>Price</th>
                         <th>Brand</th>
@@ -41,20 +47,19 @@ const ManageProducts = () => {
                     </tr>
                 </thead>
                 <tbody>
-                {products.map(item => (
+                {products.map((item, index) => (
                         <tr key={item._id}>
-                            {/* <td>{item._id}</td> */}
+                            <td>{index+1}</td>
                             <td>{item.title}</td>
                             <td>{item.price}</td>
                             <td>{item.brand}</td>
 
-                            <td className='action'>
-                                <button className='edit-btn'><Link to={`/dashboard/edit/${item._id}`}>Edit</Link></button>
+                            <td className='flex'>
+                                <button className='edit-btn mr-2'><Link to={`/dashboard/edit/${item._id}`}>Edit</Link></button>
                                 <button onClick={()=> handleDelete(item._id)} className='dlt-btn'>Delete</button>
                             </td>
                         </tr>
                     ))}
-                    
                 </tbody>
             </table>
         </div>

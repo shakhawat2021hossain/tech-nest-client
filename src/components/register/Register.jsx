@@ -2,11 +2,11 @@ import { useContext } from 'react';
 import './Register.css';
 import { AuthContext } from '../../provider/AuthProvider';
 import toast from 'react-hot-toast';
-import { sendEmailVerification, updateProfile } from 'firebase/auth';
+import { updateProfile } from 'firebase/auth';
 import { Link, useNavigate } from 'react-router-dom';
 const Register = () => {
     const navigate = useNavigate();
-    const { createUser, googleSignIn } = useContext(AuthContext);
+    const { createUser } = useContext(AuthContext);
     // console.log(createUser);
 
     const handleRegister = e => {
@@ -23,14 +23,28 @@ const Register = () => {
         }
         createUser(email, pass)
             .then(res => {
-
                 toast("Successfully registered")
                 navigate('/');
-                const img = res.photoURL
+                //update profile
+                const user = res.user
+                updateProfile(user, {
+                    displayName: name,
+                    photoURL: "https://i.ibb.co/CnFPnNX/60bd653f-5d19-4bff-a70b-689fb13fc953.jpg"
+                }).then(() => {
+                    // Profile updated successfully!
+                    console.log("Profile updated successfully!");
+                    console.log(user);
+                    console.log(user.displayName, user.photoURL);
+                }).catch((error) => {
+                    // An error occurred
+                    console.error("Error updating profile:", error);
+                });
+                const img = user.photoURL;
                 const userInfo = {
                     name, email, img
                 }
-                fetch('https://laptop-shop-server-vert.vercel.app/users', {
+                // console.log(userInfo);
+                fetch('https://tech-nest-server-b2xo.onrender.com/users', {
                     method: "POST",
                     headers: {
                         'content-type': 'application/json'
@@ -38,54 +52,14 @@ const Register = () => {
                     body: JSON.stringify(userInfo)
                 })
                 form.reset();
-                // console.log(res.user);
-
-                //update profile
-                updateProfile(res.user, {
-                    displayName: name,
-                    photoURL: "https://img.freepik.com/premium-vector/man-avatar-profile-picture-vector-illustration_268834-538.jpg?size=338&ext=jpg&ga=GA1.1.672697106.1717372800&semt=sph"
-                })
-
-                //send email for verification
-                sendEmailVerification(res.user)
-                    .then(() => toast("Check your mail for verification purpose."))
             })
             .catch(err => console.log(err))
 
     }
 
-    const handleGooglesignIn = () => {
-        googleSignIn()
-            .then(data => {
-                // console.log(res.user);
-                const name = data.user.displayName
-                const email = data.user.email
-                const img = data.user.photoURL
-                const userInfo = {
-                    name, email, img
-                }
-                fetch('https://laptop-shop-server-vert.vercel.app/users', {
-                    method: "POST",
-                    headers: {
-                        'content-type': 'application/json'
-                    },
-                    body: JSON.stringify(userInfo)
-                })
-                    .then(res => res.json())
-                    .then(data => {
-                        console.log(data);
-                        localStorage.setItem("token", data.token)
-                        console.log(userInfo);
-                        toast("successfully logged in");
-                        navigate('/')
-                    })
-            })
-
-    }
-
     return (
-        <div>
-            <div className="container">
+        <div className='mx-2'>
+            <div className="max-w-xl mx-auto px-2 container">
                 <form onSubmit={handleRegister} className="create-account-form">
                     <h2>Create Account</h2>
 
@@ -113,7 +87,7 @@ const Register = () => {
                         required>
                     </input>
                     <button type="submit">Submit</button>
-                    <button onClick={handleGooglesignIn} className='login-btn' type="submit">Google Sign In</button>
+                    
                     <Link to='/login'>Already have an account?</Link>
 
                 </form>

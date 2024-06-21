@@ -13,9 +13,9 @@ const Newsletter = () => {
     };
 
     return (
-        <div className="newsletter">
+        <div className="newsletter my-6 py-6">
             <h1>Newsletter</h1>
-            <div className="newsletter-content">
+            <div className='newsletter-content max-w-7xl mx-auto'>
                 <h2>Subscribe to our Newsletter</h2>
                 <p>Get the latest updates and offers.</p>
                 <form onSubmit={handleSubmit} className="newsletter-form">

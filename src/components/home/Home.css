@@ -7,15 +7,14 @@
     /* margin-bottom: 20px; */
 }
 .home-full{
-    width: 90%;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.half{
+/* .half{
     width: 45%;
-}
+} */
 h1{
     font-size: 50px;
 }

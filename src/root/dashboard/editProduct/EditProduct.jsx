@@ -6,12 +6,13 @@ import { useNavigate, useParams } from 'react-router-dom';
 const EditProduct = () => {
     const { id } = useParams()
     const navigate = useNavigate();
+    const token = localStorage.getItem('token')
 
     const [product, setProduct] = useState({});
 
     console.log(product);
     useEffect(() => {
-        fetch(`https://laptop-shop-server-vert.vercel.app/laptops/${id}`)
+        fetch(`https://tech-nest-server-b2xo.onrender.com/laptops/${id}`)
             .then(res => res.json())
             .then(data => setProduct(data))
     }, [])
@@ -31,10 +32,11 @@ const EditProduct = () => {
         const data = { title, price, config, brand, img };
         // console.log(data);
 
-        fetch(`https://laptop-shop-server-vert.vercel.app/laptops/${product._id}`, {
+        fetch(`https://tech-nest-server-b2xo.onrender.com/laptops/${product._id}`, {
             method: "PATCH",
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                authorization: `Bearer ${token}`
             },
             body: JSON.stringify(data)
         })

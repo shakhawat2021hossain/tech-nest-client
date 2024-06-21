@@ -1,8 +1,11 @@
 import React from 'react';
 import './AddProducts.css'
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 const AddProducts = () => {
+    const token = localStorage.getItem('token')
+    const navigate = useNavigate()
     const handleAdd = async e =>{
         e.preventDefault();
         const form = e.target;
@@ -14,10 +17,11 @@ const AddProducts = () => {
 
         const data = {title, img, price, config, brand}
         // console.log(data);
-        await fetch('https://laptop-shop-server-vert.vercel.app/laptops', {
+        await fetch('https://tech-nest-server-b2xo.onrender.com/laptops', {
             method: 'POST',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                authorization: `bearer ${token}`
             },
             body: JSON.stringify(data)
 
@@ -27,6 +31,7 @@ const AddProducts = () => {
             console.log(data);
             form.reset()
             toast.success("Product added successfully")
+            navigate('/dashboard/manage-products')
 
         })
 

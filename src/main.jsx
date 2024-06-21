@@ -23,6 +23,7 @@ import ProductDetails from './components/productDetails/ProductDetails';
 import EditProduct from './root/dashboard/editProduct/EditProduct';
 import PrivateRoute from './route/PrivateRoute';
 import UpdateProfile from './root/dashboard/updateProfile/UpdateProfile';
+import Dashboard from './root/dashboard/Dashboard/Dashboard';
 
 const router = createBrowserRouter([
   {
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
         children: [
           {
             path: "/dashboard",
+            element: <Dashboard></Dashboard>
+          },
+          {
+            path: "/dashboard/profile",
             element: <Profile></Profile>
           },
           {

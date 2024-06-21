@@ -7,7 +7,7 @@ const ProductDetails = () => {
 
     const [value, setValue] = useState({});
     useEffect(() =>{
-        fetch(`https://laptop-shop-server-vert.vercel.app/laptops/${id}`)
+        fetch(`https://tech-nest-server-b2xo.onrender.com/laptops/${id}`)
         .then(res => res.json())
         .then(data => setValue(data))
     },[])
