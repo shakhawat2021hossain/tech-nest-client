@@ -16,11 +16,10 @@ https://tech-nest-laptops.netlify.app/
 - **Backend:**
   - Node.js
   - Express.js
-  - MongoDB (with Mongoose for ODM)
+  - MongoDB
   - JWT (for authentication)
 
-- Node.js
-- MongoDB
+  
 
 ## Usage
 
